@@ -1,3 +1,0 @@
-package mmazzola.moneyminder
-
-interface MainActivityPresenter
