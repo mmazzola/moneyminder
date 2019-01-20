@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MoneyMinder</string>
+    <string name="actions_accounts">Manage accounts</string>
+    <string name="actions_graphs">Show graphs</string>
+</resources>
