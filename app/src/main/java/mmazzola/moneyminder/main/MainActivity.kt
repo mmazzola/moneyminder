@@ -10,11 +10,15 @@ import com.log4k.Log4k
 import com.log4k.android.AndroidAppender
 import com.log4k.i
 import mmazzola.moneyminder.BuildConfig
+import mmazzola.moneyminder.MoneyMinderApplication
 import mmazzola.moneyminder.R
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainContract.View {
-    private lateinit var presenter: MainContract.Presenter
+    @Inject lateinit var presenter: MainContract.Presenter
+
     private lateinit var addCategoryButton: ImageButton
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +27,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         }
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.action_bar))
-        setPresenter(MainActivityPresenter(this))
+        (application as MoneyMinderApplication).moneyMinderComponent.inject(this)
         addCategoryButton = findViewById(R.id.button_category_add)
         addCategoryButton.setOnClickListener { presenter.onAddCategoryTapped() }
         presenter.onViewCreated()
@@ -50,15 +54,6 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         }
     }
 
-    override fun onDestroy() {
-        presenter.onDestroy()
-        super.onDestroy()
-    }
-
     override fun displayCategories() {
-    }
-
-    override fun setPresenter(presenter: MainContract.Presenter) {
-        this.presenter = presenter
     }
 }

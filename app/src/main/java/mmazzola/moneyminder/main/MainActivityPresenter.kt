@@ -1,17 +1,14 @@
 package mmazzola.moneyminder.main
 
-class MainActivityPresenter(view: MainContract.View) : MainContract.Presenter
-{
-    private var view : MainContract.View? = view
-    override fun onViewCreated() {
-        view?.displayCategories()
-    }
+import com.log4k.i
 
-    override fun onDestroy() {
-        this.view = null
+class MainActivityPresenter : MainContract.Presenter
+{
+    override fun onViewCreated() {
     }
     override fun onCategoriesLoaded() {
     }
     override fun onAddCategoryTapped() {
+        i("Add Category!")
     }
 }

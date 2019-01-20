@@ -1,17 +1,14 @@
 package mmazzola.moneyminder.main
 
-import mmazzola.moneyminder.foundation.BasePresenter
-import mmazzola.moneyminder.foundation.BaseView
-
 interface MainContract {
 
-    interface Presenter : BasePresenter {
+    interface Presenter {
         fun onViewCreated()
         fun onCategoriesLoaded()
         fun onAddCategoryTapped()
     }
 
-    interface View : BaseView<Presenter> {
+    interface View {
         fun displayCategories()
     }
 }
