@@ -1,14 +1,16 @@
 package mmazzola.moneyminder.main
 
-import com.log4k.i
+import mmazzola.moneyminder.BasePresenter
 
-class MainActivityPresenter : MainContract.Presenter
-{
+class MainActivityPresenter(view: MainContract.View) : BasePresenter<MainContract.View>(view),
+    MainContract.Presenter {
+
     override fun onViewCreated() {
     }
+
     override fun onCategoriesLoaded() {
     }
+
     override fun onAddCategoryTapped() {
-        i("Add Category!")
     }
 }

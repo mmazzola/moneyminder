@@ -1,14 +1,15 @@
 package mmazzola.moneyminder.dagger
 
-import android.app.Application
 import android.content.Context
 import dagger.Module
 import dagger.Provides
+import mmazzola.moneyminder.MoneyMinderApplication
 import javax.inject.Singleton
 
 @Module
-class AppModule (private val app: Application){
+class AppModule{
+
     @Singleton
     @Provides
-    fun provideContext() : Context= app
+    fun provideContext(app : MoneyMinderApplication) : Context = app.applicationContext
 }

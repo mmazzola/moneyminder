@@ -1,20 +1,25 @@
 package mmazzola.moneyminder
 
+import android.app.Activity
 import android.app.Application
-import mmazzola.moneyminder.dagger.AppComponent
-import mmazzola.moneyminder.dagger.AppModule
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasActivityInjector
 import mmazzola.moneyminder.dagger.DaggerAppComponent
-import mmazzola.moneyminder.dagger.PresenterModule
+import javax.inject.Inject
 
-class MoneyMinderApplication : Application() {
 
-    lateinit var moneyMinderComponent: AppComponent
+class MoneyMinderApplication : Application(), HasActivityInjector {
+
+    @Inject
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
 
     override fun onCreate() {
         super.onCreate()
-        moneyMinderComponent = initDagger(this)
+        DaggerAppComponent.builder().application(this).build().inject(this)
     }
 
-    private fun initDagger(app: MoneyMinderApplication): AppComponent =
-        DaggerAppComponent.builder().appModule(AppModule(app)).presenterModule(PresenterModule()).build()
+    override fun activityInjector(): AndroidInjector<Activity> = dispatchingAndroidInjector
+
+
 }
