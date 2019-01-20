@@ -8,21 +8,31 @@
         tools:context=".MainActivity">
     <android.support.v7.widget.Toolbar
             android:id="@+id/action_bar"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:background="?colorPrimary"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/category_list" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+    <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" android:id="@+id/category_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/action_bar" android:background="@android:color/darker_gray">
+        <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" app:srcCompat="@android:drawable/ic_input_add"
+                android:id="@+id/button_category_add" android:contentDescription="@string/category_new"/>
+    </HorizontalScrollView>
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="0dp" app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"/>
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@+id/category_list" android:id="@+id/transaction_list"/>
+
 
 </android.support.constraint.ConstraintLayout>
