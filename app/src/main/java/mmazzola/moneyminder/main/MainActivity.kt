@@ -12,6 +12,7 @@ import com.log4k.i
 import dagger.android.AndroidInjection
 import mmazzola.moneyminder.BuildConfig
 import mmazzola.moneyminder.R
+import mmazzola.moneyminder.data.CategoryEntity
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainContract.View {
@@ -54,7 +55,8 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         }
     }
 
-    override fun displayCategories() {
+    override fun displayCategories(categories : List<CategoryEntity>) {
+        categories.forEach { c -> i(c.toString()) }
     }
 
     override fun onStop() {
