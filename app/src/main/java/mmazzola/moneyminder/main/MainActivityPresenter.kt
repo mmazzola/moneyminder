@@ -24,7 +24,7 @@ class MainActivityPresenter constructor(
     }
 
     override fun onAddCategoryTapped() {
-        addDisposables(saveCategoryUseCase.execute(CategoryEntity(1,"test","test"))
+        addDisposables(saveCategoryUseCase.execute(CategoryEntity("test","test"))
             .subscribeOn(schedulerFacade.io())
             .observeOn(schedulerFacade.ui())
             .subscribe(this::loadCategories))

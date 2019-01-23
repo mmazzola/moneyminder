@@ -1,5 +1,6 @@
 package mmazzola.moneyminder.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
@@ -12,6 +13,7 @@ import com.log4k.i
 import dagger.android.AndroidInjection
 import mmazzola.moneyminder.BuildConfig
 import mmazzola.moneyminder.R
+import mmazzola.moneyminder.category.CategoryActivity
 import mmazzola.moneyminder.data.CategoryEntity
 import javax.inject.Inject
 
@@ -30,7 +32,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.action_bar))
         addCategoryButton = findViewById(R.id.button_category_add)
-        addCategoryButton.setOnClickListener { presenter.onAddCategoryTapped() }
+        addCategoryButton.setOnClickListener { startActivityForResult(Intent(this,CategoryActivity::class.java),1) }
         presenter.onViewCreated()
     }
 
@@ -40,7 +42,6 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
-
         R.id.action_accounts -> {
             i("Accounts")
             true

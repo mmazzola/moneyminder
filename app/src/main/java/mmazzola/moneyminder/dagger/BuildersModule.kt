@@ -2,14 +2,16 @@ package mmazzola.moneyminder.dagger
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import mmazzola.moneyminder.category.CategoryActivity
 import mmazzola.moneyminder.main.MainActivity
-import mmazzola.moneyminder.main.MainModule
-import mmazzola.moneyminder.main.MainViewModule
 
 @Module
 abstract class BuildersModule {
 
-    @ContributesAndroidInjector(modules = [MainViewModule::class, MainModule::class])
+    @ContributesAndroidInjector(modules = [ViewModule::class, PresentersModule::class])
     abstract fun bindMainActivity() : MainActivity
+
+    @ContributesAndroidInjector(modules = [ViewModule::class, PresentersModule::class])
+    abstract fun bindCategoryActivity() : CategoryActivity
 
 }

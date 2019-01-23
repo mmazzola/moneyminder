@@ -6,7 +6,9 @@ import android.arch.persistence.room.PrimaryKey
 
 @Entity
 data class CategoryEntity(
-    @PrimaryKey var id: Int,
     @ColumnInfo(name = "title") var title: String,
     @ColumnInfo(name = "imageUrl") var imageUrl: String
 )
+{
+    @PrimaryKey(autoGenerate = true) var id: Long = 0
+}
