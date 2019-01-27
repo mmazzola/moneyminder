@@ -7,7 +7,6 @@ interface MainContract {
     interface Presenter {
         fun onViewCreated()
         fun loadCategories()
-        fun onAddCategoryTapped()
     }
 
     interface View {

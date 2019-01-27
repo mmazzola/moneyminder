@@ -4,4 +4,11 @@
     <string name="actions_graphs">Show graphs</string>
     <string name="category_new">Add category</string>
     <string name="title_activity_category">CategoryActivity</string>
+    <string name="label_category_name">Name</string>
+    <string name="button_category_create_label">Create</string>
+    <string name="icon_house_content"/>
+    <string name="category_name_hint"/>
+    <string name="icon_beer_content">Drinks out</string>
+    <string name="icon_car_content">Car</string>
+    <string name="icon_cart_content">Groceries</string>
 </resources>

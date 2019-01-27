@@ -17,12 +17,10 @@ class PresentersModule {
     fun provideMainPresenter(
         view: MainContract.View,
         loadCategoriesUseCase: LoadCategoriesUseCase,
-        saveCategoryUseCase: SaveCategoryUseCase,
         schedulerFacade: SchedulerFacade
     ) = MainActivityPresenter(
         view,
         loadCategoriesUseCase,
-        saveCategoryUseCase,
         schedulerFacade
     )
 
@@ -30,9 +28,11 @@ class PresentersModule {
     @Provides
     fun provideCategoryPresenter(
         view: CategoryContract.View,
+        saveCategoryUseCase: SaveCategoryUseCase,
         schedulerFacade: SchedulerFacade
     ) = CategoryActivityPresenter(
         view,
+        saveCategoryUseCase,
         schedulerFacade
     )
 }

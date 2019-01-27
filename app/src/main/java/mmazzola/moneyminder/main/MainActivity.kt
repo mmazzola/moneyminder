@@ -18,7 +18,8 @@ import mmazzola.moneyminder.data.CategoryEntity
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), MainContract.View {
-    @Inject lateinit var presenter: MainActivityPresenter
+    @Inject
+    lateinit var presenter: MainActivityPresenter
 
     private lateinit var addCategoryButton: ImageButton
 
@@ -32,8 +33,15 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.action_bar))
         addCategoryButton = findViewById(R.id.button_category_add)
-        addCategoryButton.setOnClickListener { startActivityForResult(Intent(this,CategoryActivity::class.java),1) }
+        addCategoryButton.setOnClickListener {
+            startActivity(Intent(this, CategoryActivity::class.java))
+        }
         presenter.onViewCreated()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        presenter.loadCategories()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -56,7 +64,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         }
     }
 
-    override fun displayCategories(categories : List<CategoryEntity>) {
+    override fun displayCategories(categories: List<CategoryEntity>) {
         categories.forEach { c -> i(c.toString()) }
     }
 

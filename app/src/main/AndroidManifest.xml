@@ -15,7 +15,8 @@
         <activity
                 android:name=".category.CategoryActivity"
                 android:label="@string/title_activity_category"
-                android:theme="@style/NoActionBar">
+                android:theme="@style/NoActionBar"
+                android:parentActivityName=".main.MainActivity">
         </activity>
         <activity android:name=".main.MainActivity">
             <intent-filter>
